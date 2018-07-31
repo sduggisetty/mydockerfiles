@@ -1,0 +1,6 @@
+hello:
+  build: hello-world
+sample-index-nginx:
+  build: sample-index-nginx
+  ports:
+    - 8080:80

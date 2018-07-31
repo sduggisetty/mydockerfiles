@@ -1,0 +1,10 @@
+hello:
+  build: hello-world
+sample-index-nginx:
+  build: sample-index-nginx
+  ports:
+    - 8080:80
+sample-nodejs-app:
+  image: advithdevops/sample-nodejs-app
+  ports:
+    - 5000:3000
