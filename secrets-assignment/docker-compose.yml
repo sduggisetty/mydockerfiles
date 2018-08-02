@@ -1,0 +1,38 @@
+# create your drupal and postgres config here, based off the last assignment
+# Drupal with PostgreSQL
+#
+# Access via "http://localhost:8080"
+# Database name: postgres
+# Database username: postgres
+# Database password: postgres
+# Using named vloumes.
+
+version: '3.1'
+services:
+  mydrupal:
+    image: drupal:8.2
+    ports:
+      - 8080:80
+    volumes:
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles
+      - drupal-themes:/var/www/html/themes
+      - drupal-sites:/var/www/html/sites
+    restart: always
+  mypostgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD_FILE:/run/secrets/mypass
+    secrets:
+      - mypass
+    volumes:
+      - drupal-pgdata:/var/lib/postgresql/data
+volumes:
+  drupal-pgdata:
+  drupal-modules:
+  drupal-profiles:
+  drupal-themes:
+  drupal-sites:
+secrets:
+  mypass:
+    external: true
