@@ -1,0 +1,6 @@
+my-test:
+  image: hello-world
+my-test2:
+  image: ubuntu
+my-test3:
+  image: alpine
